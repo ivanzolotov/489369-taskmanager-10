@@ -1,8 +1,10 @@
+'use strict';
+
 const TASK_COUNT = 3;
 
 const createSiteMenuTemplate = () => {
   return (
-   `<section class="control__btn-wrap">
+    `<section class="control__btn-wrap">
       <input
         type="radio"
         name="control"
@@ -35,7 +37,7 @@ const createSiteMenuTemplate = () => {
 
 const createFilterTemplate = () => {
   return (
-   `<section class="main__filter filter container">
+    `<section class="main__filter filter container">
       <input
         type="radio"
         id="filter__all"
@@ -461,7 +463,7 @@ const render = (container, template, place = `beforeend`) => {
 };
 
 const siteMainElement = document.querySelector(`.main`);
-const siteHeaderElement = siteMainElement.querySelector('.main__control');
+const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
 
 render(siteHeaderElement, createSiteMenuTemplate());
 render(siteMainElement, createFilterTemplate());
@@ -471,7 +473,7 @@ const taskListElement = siteMainElement.querySelector(`.board__tasks`);
 render(taskListElement, createTaskEditTemplate());
 
 for (let i = 0; i < TASK_COUNT; i++) {
-  render(taskListElement, createTaskTemplate())
+  render(taskListElement, createTaskTemplate());
 }
 
 // В лекции итерировались вот так, но зачем?!
