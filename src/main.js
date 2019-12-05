@@ -1,5 +1,3 @@
-'use strict';
-
 const TASK_COUNT = 3;
 
 import {createSiteMenuTemplate} from './components/site-menu.js';
