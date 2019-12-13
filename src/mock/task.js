@@ -1,3 +1,5 @@
+import { getRandomBoolean } from '../utils.js';
+
 const DESCRIPTIONS = [
   `Изучить теорию`,
   `Сделать домашку`,
@@ -33,8 +35,6 @@ const defaultRepeatingDays = {
   sa: false,
   su: false,
 };
-
-const getRandomBoolean = () => Math.random() < 0.5;
 
 const getRandomArrayItem = (array) => array[~~(Math.random() * array.length)];
 
