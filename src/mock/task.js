@@ -84,4 +84,12 @@ const generateTask = () => {
   }
 }
 
-export { generateTask };
+const generateTasks = (count) => {
+  const tasks = [];
+  for (let i = 0; i < count; i++) {
+    tasks.push(generateTask());
+  }
+  return tasks;
+}
+
+export { generateTask, generateTasks };
