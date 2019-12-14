@@ -1,4 +1,4 @@
-import { COLORS, getRandomBoolean } from '../utils.js';
+import {COLORS, getRandomBoolean} from '../utils.js';
 
 const DESCRIPTIONS = [
   `Изучить теорию`,
@@ -54,7 +54,7 @@ const getRandomRepeatingDays = () => {
   });
 
   return repeatingDays;
-}
+};
 
 const generateTask = () => {
   const description = getRandomArrayItem(DESCRIPTIONS);
@@ -73,8 +73,8 @@ const generateTask = () => {
     color,
     isFavorite,
     isArchive,
-  }
-}
+  };
+};
 
 const generateTasks = (count) => {
   const tasks = [];
@@ -82,6 +82,6 @@ const generateTasks = (count) => {
     tasks.push(generateTask());
   }
   return tasks;
-}
+};
 
-export { generateTask, generateTasks };
+export {generateTask, generateTasks};

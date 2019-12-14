@@ -1,5 +1,3 @@
-import { getRandomBoolean } from '../utils.js';
-
 const createFilterMarkup = (filter, index) => {
   const {name, count} = filter;
   const isChecked = index === 0 ? true : false;
@@ -17,7 +15,7 @@ const createFilterMarkup = (filter, index) => {
        ${name} <span class="filter__all-count">${count}</span>
      </label>`
   );
-}
+};
 
 const createFilterTemplate = (filters) => {
   const filtersMarkup = filters
@@ -31,4 +29,4 @@ const createFilterTemplate = (filters) => {
   );
 };
 
-export { createFilterTemplate };
+export {createFilterTemplate};

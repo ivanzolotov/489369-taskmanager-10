@@ -1,4 +1,4 @@
-import { COLORS, monthNames, formatTime } from '../utils.js';
+import {COLORS, monthNames, formatTime} from '../utils.js';
 
 const createRepeatedDaysMarkup = (repeatingDays) => {
   return Object.keys(repeatingDays)
@@ -41,7 +41,7 @@ const createColorsMarkup = (taskColor) => {
 };
 
 export const createTaskEditTemplate = (task) => {
-  const { description, dueDate, repeatingDays, tags, color, isFavorite, isArchive } = task;
+  const {description, dueDate, repeatingDays, tags, color} = task;
 
   const isDated = !!dueDate;
   const isRepeated = Object.values(repeatingDays).some(Boolean);
@@ -73,25 +73,23 @@ export const createTaskEditTemplate = (task) => {
             <div class="card__details">
               <div class="card__dates">
                 <button class="card__date-deadline-toggle" type="button">
-                  date: <span class="card__date-status">${dateStatus}</span>
+                  date:&nbsp;<span class="card__date-status">${dateStatus}</span>
                 </button>
-                ${isDated ?
-                `<fieldset class="card__date-deadline">
+                ${isDated ? `
+                <fieldset class="card__date-deadline">
                   <label class="card__input-deadline-wrap">
                     <input class="card__date" type="text" placeholder="" name="date" value="${date} ${time}">
                   </label>
-                </fieldset>` :
-                ``}
+                </fieldset>` : ``}
                 <button class="card__repeat-toggle" type="button">
                   repeat:<span class="card__repeat-status">${repeatStatus}</span>
                 </button>
-                ${isRepeated ?
-                `<fieldset class="card__repeat-days">
+                ${isRepeated ? `
+                <fieldset class="card__repeat-days">
                 <div class="card__repeat-days-inner">
                   ${repeatedDaysMarkup}
                 </div>
-                </fieldset>`:
-                ``}
+                </fieldset>` : ``}
               </div>
               <div class="card__hashtag">
                 <div class="card__hashtag-list">

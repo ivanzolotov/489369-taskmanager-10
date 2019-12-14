@@ -1,4 +1,4 @@
-import { monthNames, formatTime } from '../utils.js';
+import {monthNames, formatTime} from '../utils.js';
 
 const createHashtagMarkup = (tags) => {
   return tags.map((tag) => {
@@ -14,7 +14,7 @@ const createHashtagMarkup = (tags) => {
 };
 
 const createTaskTemplate = (task) => {
-  const { description, dueDate, repeatingDays, tags, color, isFavorite, isArchive } = task;
+  const {description, dueDate, repeatingDays, tags, color} = task;
 
   const isExpired = dueDate instanceof Date && dueDate < Date.now();
   const isDated = !!dueDate;
@@ -72,4 +72,4 @@ const createTaskTemplate = (task) => {
   );
 };
 
-export { createTaskTemplate };
+export {createTaskTemplate};

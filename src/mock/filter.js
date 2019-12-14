@@ -15,8 +15,8 @@ const generateFilters = (tasks = new Array(NUMBER_OF_TASKS)) => {
     return {
       name: filter,
       count: (filter === `all`) ? tasks.length : ~~(Math.random() * tasks.length),
-    }
-  })
+    };
+  });
 };
 
-export { generateFilters };
+export {generateFilters};
