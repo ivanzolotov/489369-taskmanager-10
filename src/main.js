@@ -26,9 +26,7 @@ render(siteMainElement, createBoardTemplate());
 const taskListElement = siteMainElement.querySelector(`.board__tasks`);
 render(taskListElement, createTaskEditTemplate(tasks[0]));
 
-tasks.slice(1).forEach((task) => {
-  render(taskListElement, createTaskTemplate(task));
-});
+tasks.slice(1).forEach((task) => render(taskListElement, createTaskTemplate(task)));
 
 const boardElement = siteMainElement.querySelector(`.board`);
 render(boardElement, createLoadMoreButtonTemplate());
