@@ -1,4 +1,4 @@
-import { getRandomBoolean } from '../utils.js';
+import { COLORS, getRandomBoolean } from '../utils.js';
 
 const DESCRIPTIONS = [
   `Изучить теорию`,
@@ -15,14 +15,6 @@ const TAGS = [
 ];
 
 const TAGS_MAX = 3;
-
-const COLORS = [
-  `black`,
-  `yellow`,
-  `blue`,
-  `green`,
-  `pink`,
-]
 
 const DATE_WINDOW = 7;
 
