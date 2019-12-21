@@ -26,7 +26,7 @@ const createTaskTemplate = (task) => {
 
   const hashtags = createHashtagMarkup(Array.from(tags));
 
-  return createElement(
+  return (
     `<article class="card card--${color} ${repeatClass} ${deadlineClass}">
       <div class="card__form">
         <div class="card__inner">
@@ -72,4 +72,26 @@ const createTaskTemplate = (task) => {
   );
 };
 
-export {createTaskTemplate};
+export default class Task {
+  constructor(task) {
+    this._element = null;
+    this._task = task;
+  }
+
+  getTemplate() {
+    return createTaskTemplate(this._task);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
+

@@ -3,7 +3,7 @@ import {render} from './utils.js';
 import SiteMenuComponent from './components/site-menu.js';
 import FilterComponent from './components/filter.js';
 import BoardComponent from './components/board.js';
-import {createTaskTemplate} from './components/task.js';
+import TaskComponent from './components/task.js';
 import TaskEditComponent from './components/task-edit.js';
 import LoadMoreButtonComponent from './components/load-more.js';
 
@@ -33,7 +33,7 @@ const taskListElement = siteMainElement.querySelector(`.board__tasks`);
 render(taskListElement, new TaskEditComponent(tasks[0]).getElement(), `beforeend`);
 
 let visibleTasksCount = TASKS_COUNT_ON_START;
-tasks.slice(1, visibleTasksCount).forEach((task) => render(taskListElement, createTaskTemplate(task), `beforeend`));
+tasks.slice(1, visibleTasksCount).forEach((task) => render(taskListElement, new TaskComponent(task).getElement(), `beforeend`));
 
 const boardElement = siteMainElement.querySelector(`.board`);
 render(boardElement, new LoadMoreButtonComponent().getElement(), `beforeend`);
@@ -45,6 +45,6 @@ loadMoreElement.addEventListener(`click`, () => {
   const currentVisibleTasksCount = visibleTasksCount;
   visibleTasksCount += TASKS_COUNT_BY_BUTTON;
 
-  tasks.slice(currentVisibleTasksCount, visibleTasksCount).forEach((task) => render(taskListElement, createTaskTemplate(task), `beforeend`));
+  tasks.slice(currentVisibleTasksCount, visibleTasksCount).forEach((task) => render(taskListElement, new TaskComponent(task).getElement(), `beforeend`));
   removePointlessLoadMoreButton(loadMoreElement, visibleTasksCount, tasks.length);
 });
