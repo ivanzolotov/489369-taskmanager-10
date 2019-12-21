@@ -8,7 +8,7 @@ import TaskEditComponent from './components/task-edit.js';
 import LoadMoreButtonComponent from './components/load-more.js';
 
 import {generateFilters} from './mock/filter.js';
-import {generateTask, generateTasks} from './mock/task.js';
+import {generateTasks} from './mock/task.js';
 
 const TASK_COUNT = 30;
 const TASKS_COUNT_ON_START = 8;
