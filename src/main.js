@@ -2,7 +2,7 @@ import {render} from './utils.js';
 
 import SiteMenuComponent from './components/site-menu.js';
 import {createFilterTemplate} from './components/filter.js';
-import {createBoardTemplate} from './components/board.js';
+import BoardComponent from './components/board.js';
 import {createTaskTemplate} from './components/task.js';
 import {createTaskEditTemplate} from './components/task-edit.js';
 import {createLoadMoreButtonTemplate} from './components/load-more.js';
@@ -27,7 +27,7 @@ const siteMainElement = document.querySelector(`.main`);
 const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
 render(siteHeaderElement, new SiteMenuComponent().getElement(), `beforeend`);
 render(siteMainElement, createFilterTemplate(filters), `beforeend`);
-render(siteMainElement, createBoardTemplate(), `beforeend`);
+render(siteMainElement, new BoardComponent().getElement(), `beforeend`);
 
 const taskListElement = siteMainElement.querySelector(`.board__tasks`);
 render(taskListElement, createTaskEditTemplate(tasks[0]), `beforeend`);
