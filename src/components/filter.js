@@ -1,3 +1,5 @@
+import {createElement} from '../utils.js';
+
 const createFilterMarkup = (filter, index) => {
   const {name, count} = filter;
   const isChecked = index === 0 ? true : false;
@@ -22,7 +24,7 @@ const createFilterTemplate = (filters) => {
     .map((filter, i) => createFilterMarkup(filter, i))
     .join(`\n`);
 
-  return (
+  return createElement(
     `<section class="main__filter filter container">
        ${filtersMarkup}
      </section>`

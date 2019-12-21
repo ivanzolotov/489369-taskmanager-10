@@ -1,5 +1,7 @@
+import {createElement} from '../utils.js';
+
 export const createBoardTemplate = () => {
-  return (
+  return createElement(
     `<section class="board container">
         <div class="board__filter-list">
           <a href="#" class="board__filter">SORT BY DEFAULT</a>

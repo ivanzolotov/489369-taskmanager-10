@@ -1,4 +1,4 @@
-import {MONTH_NAMES, formatTime} from '../utils.js';
+import {MONTH_NAMES, formatTime, createElement} from '../utils.js';
 
 const createHashtagMarkup = (tags) => {
   return tags.map((tag) => {
@@ -26,7 +26,7 @@ const createTaskTemplate = (task) => {
 
   const hashtags = createHashtagMarkup(Array.from(tags));
 
-  return (
+  return createElement(
     `<article class="card card--${color} ${repeatClass} ${deadlineClass}">
       <div class="card__form">
         <div class="card__inner">

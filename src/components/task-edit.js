@@ -1,4 +1,4 @@
-import {COLORS, MONTH_NAMES, formatTime} from '../utils.js';
+import {COLORS, MONTH_NAMES, formatTime, createElement} from '../utils.js';
 
 const createRepeatedDaysMarkup = (repeatingDays) => {
   return Object.keys(repeatingDays)
@@ -55,7 +55,7 @@ export const createTaskEditTemplate = (task) => {
   const tagsMarkup = tags ? createTagsMarkup(tags) : ``;
   const colorsMarkup = createColorsMarkup(color);
 
-  return (
+  return createElement(
     `<article class="card card--edit card--${color} ${repeatClass}">
       <form class="card__form" method="get">
         <div class="card__inner">
