@@ -1,6 +1,6 @@
 import {render} from './utils.js';
 
-import {createSiteMenuTemplate} from './components/site-menu.js';
+import SiteMenuComponent from './components/site-menu.js';
 import {createFilterTemplate} from './components/filter.js';
 import {createBoardTemplate} from './components/board.js';
 import {createTaskTemplate} from './components/task.js';
@@ -25,7 +25,7 @@ const tasks = generateTasks(TASK_COUNT);
 
 const siteMainElement = document.querySelector(`.main`);
 const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
-render(siteHeaderElement, createSiteMenuTemplate(), `beforeend`);
+render(siteHeaderElement, new SiteMenuComponent().getElement(), `beforeend`);
 render(siteMainElement, createFilterTemplate(filters), `beforeend`);
 render(siteMainElement, createBoardTemplate(), `beforeend`);
 
