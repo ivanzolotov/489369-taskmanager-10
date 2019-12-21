@@ -1,4 +1,4 @@
-import {COLORS, monthNames, formatTime} from '../utils.js';
+import {COLORS, MONTH_NAMES, formatTime} from '../utils.js';
 
 const createRepeatedDaysMarkup = (repeatingDays) => {
   return Object.keys(repeatingDays)
@@ -49,7 +49,7 @@ export const createTaskEditTemplate = (task) => {
   const repeatClass = isRepeated ? `card--repeat` : ``;
   const dateStatus = isDated ? `yes` : `no`;
   const repeatStatus = isRepeated ? `yes` : `no`;
-  const date = isDated ? `${dueDate.getDate()} ${monthNames[dueDate.getMonth()]}` : ``;
+  const date = isDated ? `${dueDate.getDate()} ${MONTH_NAMES[dueDate.getMonth()]}` : ``;
   const time = isDated ? formatTime(dueDate) : ``;
   const repeatedDaysMarkup = isRepeated ? createRepeatedDaysMarkup(repeatingDays) : ``;
   const tagsMarkup = tags ? createTagsMarkup(tags) : ``;

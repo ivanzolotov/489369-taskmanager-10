@@ -1,4 +1,4 @@
-import {monthNames, formatTime} from '../utils.js';
+import {MONTH_NAMES, formatTime} from '../utils.js';
 
 const createHashtagMarkup = (tags) => {
   return tags.map((tag) => {
@@ -21,7 +21,7 @@ const createTaskTemplate = (task) => {
 
   const repeatClass = Object.values(repeatingDays).some(Boolean) ? `card--repeat` : ``;
   const deadlineClass = isExpired ? `card--deadline` : ``;
-  const date = isDated ? `${dueDate.getDate()} ${monthNames[dueDate.getMonth()]}` : ``;
+  const date = isDated ? `${dueDate.getDate()} ${MONTH_NAMES[dueDate.getMonth()]}` : ``;
   const time = isDated ? formatTime(dueDate) : ``;
 
   const hashtags = createHashtagMarkup(Array.from(tags));

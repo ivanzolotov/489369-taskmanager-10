@@ -6,7 +6,7 @@ const COLORS = [
   `pink`,
 ];
 
-const monthNames = [
+const MONTH_NAMES = [
   `January`,
   `February`,
   `March`,
@@ -33,4 +33,4 @@ const formatTime = (date) => {
   return `${hours}:${minutes} ${interval}`;
 }
 
-export { COLORS, monthNames, getRandomBoolean, makeTwoDigitNumber, formatTime };
+export { COLORS, MONTH_NAMES, getRandomBoolean, makeTwoDigitNumber, formatTime };
