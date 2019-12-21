@@ -40,7 +40,7 @@ const createColorsMarkup = (taskColor) => {
   .join(`\n`);
 };
 
-export const createTaskEditTemplate = (task) => {
+const createTaskEditTemplate = (task) => {
   const {description, dueDate, repeatingDays, tags, color} = task;
 
   const isDated = !!dueDate;
@@ -55,7 +55,7 @@ export const createTaskEditTemplate = (task) => {
   const tagsMarkup = tags ? createTagsMarkup(tags) : ``;
   const colorsMarkup = createColorsMarkup(color);
 
-  return createElement(
+  return (
     `<article class="card card--edit card--${color} ${repeatClass}">
       <form class="card__form" method="get">
         <div class="card__inner">
@@ -116,3 +116,26 @@ export const createTaskEditTemplate = (task) => {
     </article>`
   );
 };
+
+export default class TaskEdit {
+  constructor(task) {
+    this._element = null;
+    this._task = task;
+  }
+
+  getTemplate() {
+    return createTaskEditTemplate(this._task);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}

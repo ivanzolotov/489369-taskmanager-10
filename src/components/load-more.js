@@ -7,7 +7,7 @@ const createLoadMoreButtonTemplate = () => {
 };
 
 export default class LoadMoreButton{
-  constructor(filters) {
+  constructor() {
     this._element = null;
   }
 

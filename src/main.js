@@ -4,7 +4,7 @@ import SiteMenuComponent from './components/site-menu.js';
 import FilterComponent from './components/filter.js';
 import BoardComponent from './components/board.js';
 import {createTaskTemplate} from './components/task.js';
-import {createTaskEditTemplate} from './components/task-edit.js';
+import TaskEditComponent from './components/task-edit.js';
 import LoadMoreButtonComponent from './components/load-more.js';
 
 import {generateFilters} from './mock/filter.js';
@@ -30,7 +30,7 @@ render(siteMainElement, new FilterComponent(filters).getElement(), `beforeend`);
 render(siteMainElement, new BoardComponent().getElement(), `beforeend`);
 
 const taskListElement = siteMainElement.querySelector(`.board__tasks`);
-render(taskListElement, createTaskEditTemplate(tasks[0]), `beforeend`);
+render(taskListElement, new TaskEditComponent(tasks[0]).getElement(), `beforeend`);
 
 let visibleTasksCount = TASKS_COUNT_ON_START;
 tasks.slice(1, visibleTasksCount).forEach((task) => render(taskListElement, createTaskTemplate(task), `beforeend`));
