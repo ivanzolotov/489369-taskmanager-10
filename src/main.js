@@ -14,9 +14,10 @@ const TASK_COUNT = 30;
 const TASKS_COUNT_ON_START = 8;
 const TASKS_COUNT_BY_BUTTON = 8;
 
-const removePointlessLoadMoreButton = (element, showedTasks, loadedTasks) => {
+const removePointlessLoadMoreButton = (component, showedTasks, loadedTasks) => {
   if (showedTasks >= loadedTasks) {
-    element.remove();
+    component.getElement().remove();
+    component.removeElement();
   }
 };
 
@@ -27,24 +28,27 @@ const siteMainElement = document.querySelector(`.main`);
 const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
 render(siteHeaderElement, new SiteMenuComponent().getElement(), `beforeend`);
 render(siteMainElement, new FilterComponent(filters).getElement(), `beforeend`);
-render(siteMainElement, new BoardComponent().getElement(), `beforeend`);
 
-const taskListElement = siteMainElement.querySelector(`.board__tasks`);
+const boardComponent = new BoardComponent();
+render(siteMainElement, boardComponent.getElement(), `beforeend`);
+
+const taskListElement = boardComponent.getElement().querySelector(`.board__tasks`);
 render(taskListElement, new TaskEditComponent(tasks[0]).getElement(), `beforeend`);
 
 let visibleTasksCount = TASKS_COUNT_ON_START;
 tasks.slice(1, visibleTasksCount).forEach((task) => render(taskListElement, new TaskComponent(task).getElement(), `beforeend`));
 
+const loadMoreButtonComponent = new LoadMoreButtonComponent();
+render(boardComponent.getElement(), loadMoreButtonComponent.getElement(), `beforeend`);
+
 const boardElement = siteMainElement.querySelector(`.board`);
-render(boardElement, new LoadMoreButtonComponent().getElement(), `beforeend`);
 
-const loadMoreElement = boardElement.querySelector(`.load-more`);
-removePointlessLoadMoreButton(loadMoreElement, visibleTasksCount, tasks.length);
+removePointlessLoadMoreButton(loadMoreButtonComponent, visibleTasksCount, tasks.length);
 
-loadMoreElement.addEventListener(`click`, () => {
+loadMoreButtonComponent.getElement().addEventListener(`click`, () => {
   const currentVisibleTasksCount = visibleTasksCount;
   visibleTasksCount += TASKS_COUNT_BY_BUTTON;
 
   tasks.slice(currentVisibleTasksCount, visibleTasksCount).forEach((task) => render(taskListElement, new TaskComponent(task).getElement(), `beforeend`));
-  removePointlessLoadMoreButton(loadMoreElement, visibleTasksCount, tasks.length);
+  removePointlessLoadMoreButton(loadMoreButtonComponent, visibleTasksCount, tasks.length);
 });

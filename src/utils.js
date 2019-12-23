@@ -1,8 +1,3 @@
-const RenderPosition = {
-  AFTERBEGIN: `afterbegin`,
-  BEFOREEND: `beforeend`
-};
-
 const COLORS = [
   `black`,
   `yellow`,
@@ -47,10 +42,10 @@ const createElement = (template) => {
 
 const render = (container, element, place) => {
   switch (place) {
-    case RenderPosition.AFTERBEGIN:
+    case `afterbegin`:
       container.prepend(element);
       break;
-    case RenderPosition.BEFOREEND:
+    case `beforeend`:
       container.append(element);
       break;
   }
