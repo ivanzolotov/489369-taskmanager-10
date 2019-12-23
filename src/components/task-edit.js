@@ -1,4 +1,4 @@
-import {COLORS, monthNames, formatTime} from '../utils.js';
+import {COLORS, MONTH_NAMES, formatTime, createElement} from '../utils.js';
 
 const createRepeatedDaysMarkup = (repeatingDays) => {
   return Object.keys(repeatingDays)
@@ -40,7 +40,7 @@ const createColorsMarkup = (taskColor) => {
   .join(`\n`);
 };
 
-export const createTaskEditTemplate = (task) => {
+const createTaskEditTemplate = (task) => {
   const {description, dueDate, repeatingDays, tags, color} = task;
 
   const isDated = !!dueDate;
@@ -49,7 +49,7 @@ export const createTaskEditTemplate = (task) => {
   const repeatClass = isRepeated ? `card--repeat` : ``;
   const dateStatus = isDated ? `yes` : `no`;
   const repeatStatus = isRepeated ? `yes` : `no`;
-  const date = isDated ? `${dueDate.getDate()} ${monthNames[dueDate.getMonth()]}` : ``;
+  const date = isDated ? `${dueDate.getDate()} ${MONTH_NAMES[dueDate.getMonth()]}` : ``;
   const time = isDated ? formatTime(dueDate) : ``;
   const repeatedDaysMarkup = isRepeated ? createRepeatedDaysMarkup(repeatingDays) : ``;
   const tagsMarkup = tags ? createTagsMarkup(tags) : ``;
@@ -116,3 +116,26 @@ export const createTaskEditTemplate = (task) => {
     </article>`
   );
 };
+
+export default class TaskEdit {
+  constructor(task) {
+    this._element = null;
+    this._task = task;
+  }
+
+  getTemplate() {
+    return createTaskEditTemplate(this._task);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}

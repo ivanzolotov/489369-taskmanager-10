@@ -76,9 +76,10 @@ const generateTask = () => {
   };
 };
 
-const generateTasks = (count) => {
+const generateTasks = (numberOfTasks) => {
   const tasks = [];
-  for (let i = 0; i < count; i++) {
+
+  for (let i = 0; i < numberOfTasks; i++) {
     tasks.push(generateTask());
   }
   return tasks;
