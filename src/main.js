@@ -1,4 +1,4 @@
-import {render} from './utils.js';
+import {render, replace} from './utils/render.js';
 
 import SiteMenuComponent from './components/site-menu.js';
 import FilterComponent from './components/filter.js';
@@ -38,38 +38,39 @@ const renderTask = (task) => {
   editButton.addEventListener(`click`, () => {
     const onEscKeyDown = (event) => {
       if (event.keyCode === 27) {
-        taskListElement.replaceChild(taskComponent.getElement(), taskEditComponent.getElement());
+
+        replace(taskComponent, taskEditComponent);
         document.removeEventListener('keydown', onEscKeyDown);
       }
     };
 
-    taskListElement.replaceChild(taskEditComponent.getElement(), taskComponent.getElement());
+    replace(taskEditComponent, taskComponent);
     document.addEventListener('keydown', onEscKeyDown);
   });
 
   editForm.addEventListener(`submit`, () => {
-    taskListElement.replaceChild(taskComponent.getElement(), taskEditComponent.getElement());
+    replace(taskComponent, taskEditComponent);
   });
 
-  render(taskListElement, taskComponent.getElement(), `beforeend`);
+  render(taskListElement, taskComponent, `beforeend`);
 };
 
 const siteMainElement = document.querySelector(`.main`);
 const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
-render(siteHeaderElement, new SiteMenuComponent().getElement(), `beforeend`);
-render(siteMainElement, new FilterComponent(filters).getElement(), `beforeend`);
+render(siteHeaderElement, new SiteMenuComponent(), `beforeend`);
+render(siteMainElement, new FilterComponent(filters), `beforeend`);
 
 const boardComponent = new BoardComponent();
 const sortComponent = new SortComponent();
 const tasksComponent = new TasksComponent();
 
-render(siteMainElement, boardComponent.getElement(), `beforeend`);
+render(siteMainElement, boardComponent, `beforeend`);
 
 if (isAllTasksArchived) {
-  render(boardComponent.getElement(), new NoTasksComponent().getElement(), `beforeend`);
+  render(boardComponent.getElement(), new NoTasksComponent(), `beforeend`);
 } else {
-  render(boardComponent.getElement(), sortComponent.getElement(), `beforeend`);
-  render(boardComponent.getElement(), tasksComponent.getElement(), `beforeend`);
+  render(boardComponent.getElement(), sortComponent, `beforeend`);
+  render(boardComponent.getElement(), tasksComponent, `beforeend`);
 }
 
 const taskListElement = boardComponent.getElement().querySelector(`.board__tasks`);
@@ -80,7 +81,7 @@ tasks.slice(0, visibleTasksCount).forEach((task) => {
 });
 
 const loadMoreButtonComponent = new LoadMoreButtonComponent();
-render(boardComponent.getElement(), loadMoreButtonComponent.getElement(), `beforeend`);
+render(boardComponent.getElement(), loadMoreButtonComponent, `beforeend`);
 
 const boardElement = siteMainElement.querySelector(`.board`);
 

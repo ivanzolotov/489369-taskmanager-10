@@ -1,5 +1,5 @@
 import AbstractComponent from './abstract-component.js';
-import {COLORS, MONTH_NAMES, formatTime} from '../utils.js';
+import {COLORS, MONTH_NAMES, formatTime} from '../utils/common.js';
 
 const createRepeatedDaysMarkup = (repeatingDays) => {
   return Object.keys(repeatingDays)

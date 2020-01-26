@@ -33,22 +33,4 @@ const formatTime = (date) => {
   return `${hours}:${minutes} ${interval}`;
 }
 
-const createElement = (template) => {
-  const newElement = document.createElement(`div`);
-  newElement.innerHTML = template;
-
-  return newElement.firstChild;
-};
-
-const render = (container, element, place) => {
-  switch (place) {
-    case `afterbegin`:
-      container.prepend(element);
-      break;
-    case `beforeend`:
-      container.append(element);
-      break;
-  }
-};
-
-export {COLORS, MONTH_NAMES, getRandomBoolean, makeTwoDigitNumber, formatTime, createElement, render};
+export {COLORS, MONTH_NAMES, getRandomBoolean, makeTwoDigitNumber, formatTime};

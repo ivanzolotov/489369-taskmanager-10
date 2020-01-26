@@ -1,5 +1,5 @@
 import AbstractComponent from './abstract-component.js';
-import {MONTH_NAMES, formatTime} from '../utils.js';
+import {MONTH_NAMES, formatTime} from '../utils/common.js';
 
 const createHashtagMarkup = (tags) => {
   return tags.map((tag) => {

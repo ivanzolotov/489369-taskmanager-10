@@ -1,4 +1,4 @@
-import {COLORS, getRandomBoolean} from '../utils.js';
+import {COLORS, getRandomBoolean} from '../utils/common.js';
 
 const DESCRIPTIONS = [
   `Изучить теорию`,
