@@ -1,4 +1,5 @@
 import AbstractComponent from './abstract-component.js';
+import {remove} from '../utils/render.js';
 
 const createLoadMoreButtonTemplate = () => {
   return (
@@ -14,6 +15,12 @@ export default class LoadMoreButton extends AbstractComponent {
 
   setClickHandler(handler) {
     this.getElement().addEventListener(`click`, handler);
+  }
+
+  removeIfUnnesessary(showedTasks, loadedTasks) {
+    if (showedTasks >= loadedTasks) {
+      remove(this);
+    }
   }
 
 }
