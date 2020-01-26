@@ -30,12 +30,9 @@ const isAllTasksArchived = tasks.every((task) => task.isArchive);
 
 const renderTask = (task) => {
   let taskComponent = new TaskComponent(task);
-  const editButton = taskComponent.getElement().querySelector(`.card__btn--edit`);
-
   let taskEditComponent = new TaskEditComponent(task);
-  const editForm = taskEditComponent.getElement().querySelector(`form`);
 
-  editButton.addEventListener(`click`, () => {
+  const editButtonClickHandler = () => {
     const onEscKeyDown = (event) => {
       if (event.keyCode === 27) {
 
@@ -46,11 +43,12 @@ const renderTask = (task) => {
 
     replace(taskEditComponent, taskComponent);
     document.addEventListener('keydown', onEscKeyDown);
-  });
+  }
 
-  editForm.addEventListener(`submit`, () => {
+  taskComponent.setEditButtonClickHandler(editButtonClickHandler);
+  taskEditComponent.setSubmitHandler(() => {
     replace(taskComponent, taskEditComponent);
-  });
+  })
 
   render(taskListElement, taskComponent, `beforeend`);
 };
@@ -87,7 +85,7 @@ const boardElement = siteMainElement.querySelector(`.board`);
 
 removePointlessLoadMoreButton(loadMoreButtonComponent, visibleTasksCount, tasks.length);
 
-loadMoreButtonComponent.getElement().addEventListener(`click`, () => {
+loadMoreButtonComponent.setClickHandler(() => {
   const currentVisibleTasksCount = visibleTasksCount;
   visibleTasksCount += TASKS_COUNT_BY_BUTTON;
 
