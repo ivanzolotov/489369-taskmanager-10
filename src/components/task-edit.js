@@ -1,4 +1,5 @@
-import {COLORS, MONTH_NAMES, formatTime, createElement} from '../utils.js';
+import AbstractComponent from './abstract-component.js';
+import {COLORS, MONTH_NAMES, formatTime} from '../utils.js';
 
 const createRepeatedDaysMarkup = (repeatingDays) => {
   return Object.keys(repeatingDays)
@@ -117,25 +118,14 @@ const createTaskEditTemplate = (task) => {
   );
 };
 
-export default class TaskEdit {
+export default class TaskEdit extends AbstractComponent {
   constructor(task) {
-    this._element = null;
+    super();
+
     this._task = task;
   }
 
   getTemplate() {
     return createTaskEditTemplate(this._task);
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }
